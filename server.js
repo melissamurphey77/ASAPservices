@@ -7,11 +7,11 @@ const app = express();
 // the __dirname is the current directory from where the script is running
 app.use(express.static("my-app"));
 app.use(express.static(path.join("my-app", 'build')));
-app.get('/ping', function (req, res) {
- return res.send('pong');
-});
+// app.get('/ping', function (req, res) {
+//  return res.send('pong');
+// });
 app.get('/*', function (req, res) {
-  res.sendFile(path.join("my-app", 'build', 'index.html'));
+  res.sendFile("index.html", {"root": "public"});
 });
 app.listen(PORT, function() {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
